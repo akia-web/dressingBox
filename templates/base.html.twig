@@ -6,6 +6,10 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+
+    {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    <a href="{{ path('app_register')}}">inscription</a>
+    {% endif %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
