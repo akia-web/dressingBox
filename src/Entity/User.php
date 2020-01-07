@@ -38,6 +38,11 @@ class User implements UserInterface
      */
     private $token;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Utilisateur", mappedBy="id_user", cascade={"persist", "remove"})
+     */
+    private $utilisateur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,6 +129,23 @@ class User implements UserInterface
     public function setToken(?string $token): self
     {
         $this->token = $token;
+
+        return $this;
+    }
+
+    public function getUtilisateur(): ?Utilisateur
+    {
+        return $this->utilisateur;
+    }
+
+    public function setUtilisateur(Utilisateur $utilisateur): self
+    {
+        $this->utilisateur = $utilisateur;
+
+        // set the owning side of the relation if necessary
+        if ($utilisateur->getIdUser() !== $this) {
+            $utilisateur->setIdUser($this);
+        }
 
         return $this;
     }

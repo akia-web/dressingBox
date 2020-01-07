@@ -4,6 +4,8 @@ namespace App\Controller;
 
 
 use App\Entity\User;
+use App\Entity\Utilisateur;
+use App\Form\InscriptionFormType;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -17,7 +19,7 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/", name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -47,18 +49,50 @@ class SecurityController extends AbstractController
     public function register(Request $req, UserPasswordEncoderInterface $encoder ){
         if ($req->isMethod('POST')){
             $user= new User();
+            $utilisateur = new Utilisateur();
             $user->setEmail($req->request->get('email'));
+            $utilisateur->setPrenom($req->request->get('prenom'));
+            $utilisateur->setNom($req->request->get('nom'));
+            $utilisateur->setDateDeNaissance(new \DateTime($req->request->get('naissance')));
+            $utilisateur->setGenre($req->request->get('sexe'));
+            $utilisateur->setIdUser($user);
             $user->setPassword($encoder->encodePassword($user, $req->request->get('password')));
             $user->setRoles(['ROLE_USER']);
             $em= $this->getDoctrine()->getManager();
             $em->persist($user);
+            $em->persist($utilisateur);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('app_login');
         }
 
 
         return $this->render("security/register.html.twig");
     }
+
+    // /**
+    //  * @Route("/", name="register2")
+    //  */
+    // public function inscription(Request $request){
+    //     $em=$this->getDoctrine()->getManager();
+    //     $inscription = new Utilisateur();
+    //     $form = $this->createForm(InscriptionFormType::class, $inscription);
+    //     $form->handleRequest($request);
+
+    //     if($form->isSubmitted()&& $form->isValid()){
+    //         $em->persist($inscription);
+    //         $em->flush();
+    //         return $this->redirectToRoute('app_login');
+    //     }
+    //     return $this->render('security/login.html.twig',[
+    //         'blabla' => $form->createView(),
+    //     ]);
+    // }
+
+
+
+
+
+
 
     /**
      * @Route ("/forgottenpassword", name="app_forgotten_password")
@@ -131,5 +165,14 @@ class SecurityController extends AbstractController
             'token'=> $token
         ]);
     }
-}
 
+ /**
+     * @Route ("/log", name="log")
+     */
+
+    public function admin(){
+        
+     return $this->render('app/admin.html.twig');
+       }
+
+}

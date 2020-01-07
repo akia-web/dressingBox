@@ -3,23 +3,34 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+<header style="background-color: #C2ABAE">
+
+<div class="row">
+ 
+
+<div class="col-md-6" style=" margin-top : 30px">
+<H1>DRESSING BOX</H1>   
+</div> <!-- les 6 premières cases de la ligne-->
+
+
+<div class="col-md-2" >
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+   
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
     <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus style="width:300px; border:#645D5E">
+    </div> <!-- les 3 suivants-->
 
+    <div class="col-md-2" >
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" required style="width:300px; border:#645D5E">
+   </div> <!-- ferme les 3 d'aprères -->
+   
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
@@ -35,12 +46,39 @@
         </div>
     #}
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+
+
+<div class="col-md-2">
+
+<div class="col-md-3" style="margin-top: 25px">
+    <button class="btn btn-lg btn-primary" type="submit" style="height : 40px; line-height : 20px; background-color: #645D5E; border: 1px solid #645D5E">
+        connexion
     </button>
+</div>
+
 
     <div>
-        <a href="{{path('app_forgotten_password')}}"> mot de passe oublié? </a>
+        <a href="{{path('app_forgotten_password')}}" style="color:#645D5E"> mot de passe oublié? </a>
     </div>
+</div>
+</div> <!-- ferme la div row-->
+
+<div class="row">
+       {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
 </form>
+</div> <!-- ferme la div row--> 
+</nav>
+</header>
+
+
+
+<img src="images/sushi.png" alt="">
+
+
+
+
 {% endblock %}

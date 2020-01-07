@@ -3,10 +3,34 @@
 {% block title %}inscription{% endblock %}
 
 {% block body %}
-<form method="post">
-<input type="email" name="email" placeholder="email" required <br>
-<input type="password" name="password" placeholder="mot de passe" required <br>
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+    <form method="post">
+<input type="text" name="nom" placeholder="nom"required > <br>
+<input type="text" name="prenom" placeholder="prenom"required > <br>
+<label for="naissance">date de naissance</label><br>
+<input type="date" name="naissance" required> <br>
+
+<label for="">Civilité</label> <br>
+ <input type="radio" id="femme"
+     name="sexe" value="femme">
+    <label for="femme">femme</label>
+
+<input type="radio" id="homme"
+     name="sexe" value="homme">
+    <label for="homme">homme</label> <br>
+
+<input type="email" name="email" placeholder="email" required> <br>
+<input type="password" name="password" placeholder="mot de passe" required ><br>
 <button type="submit"> s'inscrire</button>
 </form>
+
+        </div>
+    </div>
+</div>
 
 {% endblock %}
