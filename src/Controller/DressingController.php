@@ -31,17 +31,27 @@ class DressingController extends AbstractController
             $vetement->setCouleur($req->request->get('couleur'));
             $vetement->setClientId($utilisateur);
             $vetement->setPhoto($req->request->get('image'));
+            
             $em= $this->getDoctrine()->getManager();
             $em->persist($vetement);
             $em->persist($utilisateur);
             $em->flush();
-            dump($vetement);
+            // dump($req->request->get('image'));
             return $this->redirectToRoute('dressing');
         }
 
 
         return $this->render("app/admin.html.twig", [
             'hauts'=> $vetements,
+        ]);
+        }
+
+     /**
+     * @Route("/detail/{id}", name="detail")
+     */
+        public function detail(Vetement2 $vetement){
+            return $this->render('app/detail.html.twig',[
+                'vetement' => $vetement, // 'article' = mot choisit qu'il faut mettre quand on appelle un élément, article= variable définit plus haut
         ]);
         }
     

@@ -5,10 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\Vetement2Repository")
- * @Vich\Uploadable()
  */
 class Vetement2
 {
@@ -18,8 +17,6 @@ class Vetement2
      * @ORM\Column(type="integer")
      */
     private $id;
-
-   
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="vetement2s")
@@ -146,5 +143,4 @@ class Vetement2
         return $this;
     }
     
-
 }

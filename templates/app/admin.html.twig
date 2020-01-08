@@ -17,11 +17,16 @@
 <div id="myTabContent" class="tab-content">
   <div class="tab-pane fade show active" id="home">
     <div class="row">
-    <div class="col-md-6" style="background-color: red">
+    <div class="col-md-6" style="">
 
     
     <h2>Haut</h2>
- {% for haut in hauts %} <img src="images/{{ haut.photo }}" > {% endfor %}
+ {% for haut in hauts %}
+
+
+ <a href="{{path("detail",{'id' : haut.id}) }}"><img src="images/{{ haut.photo }}" style="height:100px"></a> {% endfor %}
+
+
     <h2>Bas</h2>
 {# {% for bas in bas %} <p> {{ bas.photo }} </p> {% endfor %} #}
     <h2>Chaussures</h2>
