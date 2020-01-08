@@ -49,11 +49,17 @@ class Utilisateur
      */
     private $favoris;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Vetement2", mappedBy="client_id")
+     */
+    private $vetement2s;
+
    
 
     public function __construct()
     {
         $this->favoris = new ArrayCollection();
+        $this->vetement2s = new ArrayCollection();
     }
 
 
@@ -147,6 +153,37 @@ class Utilisateur
             // set the owning side to null (unless already changed)
             if ($favori->getClient() === $this) {
                 $favori->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Vetement2[]
+     */
+    public function getVetement2s(): Collection
+    {
+        return $this->vetement2s;
+    }
+
+    public function addVetement2(Vetement2 $vetement2): self
+    {
+        if (!$this->vetement2s->contains($vetement2)) {
+            $this->vetement2s[] = $vetement2;
+            $vetement2->setClientId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVetement2(Vetement2 $vetement2): self
+    {
+        if ($this->vetement2s->contains($vetement2)) {
+            $this->vetement2s->removeElement($vetement2);
+            // set the owning side to null (unless already changed)
+            if ($vetement2->getClientId() === $this) {
+                $vetement2->setClientId(null);
             }
         }
 
