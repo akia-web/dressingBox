@@ -44,31 +44,34 @@
     
         <h2>Haut</h2>
         {% for haut in hauts %}
-       <img src="images/{{ haut.photo }}" style="height:100px">
+       <img src="uploads/{{ haut.photo }}" style="height:100px">
         {% endfor %}
 
 
        <h2>Bas</h2>
         {% for ba in bas %}
-      <img src="images/{{ ba.photo }}" style="height:100px">
+      <img src="uploads/{{ ba.photo }}" style="height:100px">
         {% endfor %}
 
 
         <h2>Chaussures</h2>
         {% for chaussure in chaussures %}
-        <img src="images/{{ chaussure.photo }}" style="height:100px">
+        <img src="uploads/{{ chaussure.photo }}" style="height:100px">
         {% endfor %}
       </div> <!-- fin 6 cases-->
 
      <div class="col-md-6">
        <h2 style="text-align: center">Ajouter</h2>
-        <form action="" method="POST" >
+        <form action="" method="POST" enctype="multipart/form-data" >
           <label for="categorie">Catégorie :</label>
           <select name="categorie" id="categorie" required>
             <option value="haut">Haut</option>
             <option value="bas">Bas</option>
             <option value="chaussures">Chaussures</option>
           </select><br><br>
+
+          <label for="style">Balance ta photo :</label>
+          <input type="file" name="image" id="image" required><br><br>
 
           <label for="taille"> Taille (facultatif) :</label>
           <select name="taille" id="taille">
@@ -90,6 +93,13 @@
               <option value="rouge">Rouge</option>
               <option value="blanc">Blanc</option>
               <option value="bleu">Bleu</option>
+              <option value="gris">Gris</option>
+              <option value="rose">Rose</option>
+              <option value="violet">Violet</option>
+              <option value="vert">Vert</option>
+              <option value="jaune">Jaune</option>
+              <option value="marron">Marron</option>
+              <option value="beige">Beige</option>
             </select><br><br>
 
           <label for="style">Style :</label>
@@ -99,9 +109,6 @@
               <option value="chic">Chic</option>
               <option value="cocooning">Cocooning</option>
             </select><br><br>
-
-          <label for="style">Balance ta photo :</label>
-          <input type="file" name="image" id="image" required><br><br>
 
           <button type="submit">Ajouter</button>
      </form>
@@ -135,7 +142,7 @@
     {% for haut in hauts %}
     <div class="row">
     <div class="md-2">
-    <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : haut.id}) }}"><img src="images/{{haut.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
+    <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : haut.id}) }}"><img src="uploads/{{haut.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
     <p style="margin-left : 60px"><a href="{{path("delete",{'id': haut.id}) }}">Supprimer </a> </p>
     </div>
     <div>
@@ -148,7 +155,7 @@
     {% for ba in bas %}
     <div class="row">
     <div class="md-2">
-     <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : ba.id}) }}"><img src="images/{{ba.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
+     <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : ba.id}) }}"><img src="uploads/{{ba.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
     <p style="margin-left : 60px"><a href="{{path("delete",{'id': ba.id}) }}">Supprimer </a> </p>
     </div>
     <div>
@@ -162,7 +169,7 @@
     {% for chaussure in chaussures %}
     <div class="row">
     <div class="md-2">
-   <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : chaussure.id}) }}"><img src="images/{{chaussure.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
+   <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : chaussure.id}) }}"><img src="uploads/{{chaussure.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
     <p style="margin-left : 60px"><a href="{{path("delete",{'id': chaussure.id}) }}">Supprimer </a> </p>
     </div>
     <div>

@@ -16,7 +16,7 @@
     <div class="carousel-item active"><!--debut classe carousel active-->
 
     {% for haut in hauts %}
-      <img class="d-block w-100" src="images/{{haut.image}}" alt="First slide">
+      <img class="d-block w-100" src="uploads/{{haut.image}}" alt="First slide">
       {% endfor %}
     </div> <!--fin de div classe caroussel active-->
   
@@ -45,16 +45,6 @@
 </div>
 </div>
 <button><a href="{{path('dressing')}}">retour</button>
-{% endblock %}
-
-    {% block javascripts %}
-<script>
-    $(function(){
-        $("#haut1").click(function(){
-                $("#haut1").attr("src", "images/tshirt.jpg");
-            })
-    })
-</script>
 {% endblock %}
 
 
