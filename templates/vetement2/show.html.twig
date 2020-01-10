@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vetement2{% endblock %}
+
+{% block body %}
+    <h1>Vetement2</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ vetement2.id }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ vetement2.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ vetement2.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Taille</th>
+                <td>{{ vetement2.taille }}</td>
+            </tr>
+            <tr>
+                <th>Style</th>
+                <td>{{ vetement2.style }}</td>
+            </tr>
+            <tr>
+                <th>Marque</th>
+                <td>{{ vetement2.marque }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ vetement2.photo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('vetement2_index') }}">back to list</a>
+
+    <a href="{{ path('vetement2_edit', {'id': vetement2.id}) }}">edit</a>
+
+    {{ include('vetement2/_delete_form.html.twig') }}
+{% endblock %}

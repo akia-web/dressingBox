@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<div>
+<h1 style="text-align:center">CHOISIS TON STYLE</h1>
+<h3 style="text-align:center">Mix selon l'occasion</h3><br>
+<div style="margin:auto; width: 40%;background-color:" >
+
+<button style="margin-left: 75px;background-color:; width: 200px">Sportswear</button>
+<button style="margin-left: 75px;background-color: ;width: 200px">Classic</button><br>
+<button style="margin-left: 75px;background-color: ; width: 200px">Cocooning</button>
+<button style="margin-left: 75px;background-color: ;width: 200px">Chic</button><br><br>
+<div style="width:35%; background-color:; margin:auto">
+<div style="margin:auto;">
+   <img src="images/totoro.jpg" alt="" style="height :200px; width: 200px; border: 1px solid black" id="haut1" > 
+</div>
+
+
+
+
+<div>
+ <img src="images/jean2.jpg" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > 
+</div>
+   
+<div>
+  <img src="images/top-ten.gif" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > 
+</div><br>
+
+<button style=" width: 200px;background-color:">Mix !</button>
+</div>
+</div>
+</div>
+
+<button><a href="{{path('dressing')}}">retour</button></a>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<div>
+<h1 style="text-align:center">LAISSE NOUS T'HABILLER</h1>
+<h3 style="text-align:center">Mix selon ton humeur</h3>
+<div style="margin:auto; width: 20%;;background-color:" >
+
+
+
+<div >
+   <img src="images/totoro.jpg" alt="" style="height :200px; width: 200px; border: 1px solid black" id="haut1" > 
+</div>
+
+
+
+
+<div>
+ <img src="images/jean2.jpg" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > 
+</div>
+   
+<div>
+  <img src="images/top-ten.gif" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > 
+</div>
+
+<button style="margin-left: 75px;background-color:red">Mix !</button>
+</div>
+</div>
+<button><a href="{{path('dressing')}}">retour</button></a>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<div>
+<h1 style="text-align:center">CHOISIS TON STYLE</h1>
+<h3 style="text-align:center">clique sur les flèches</h3>
+<div style="margin:auto; width: 20%;" >
+
+
+
+<div ><!--debut du caroussel-->
+   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"><!--debut id caroussel-->
+  <div class="carousel-inner"> <!--debut classe caroussel inner-->
+    <div class="carousel-item active"><!--debut classe carousel active-->
+
+    {% for haut in hauts %}
+      <img class="d-block w-100" src="images/{{haut.image}}" alt="First slide">
+      {% endfor %}
+    </div> <!--fin de div classe caroussel active-->
+  
+  </div><!--fin classe caroussel inner-->
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> <!-- fin id caroussel-->
+</div><!-- fin du caroussel-->
+
+
+
+
+<div>
+ <button><</button> <img src="images/jean2.jpg" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > <button>></button>
+</div>
+   
+<div>
+  <button><</button> <img src="images/top-ten.gif" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > <button>></button>
+</div>
+</div>
+</div>
+<button><a href="{{path('dressing')}}">retour</button>
+{% endblock %}
+
+    {% block javascripts %}
+<script>
+    $(function(){
+        $("#haut1").click(function(){
+                $("#haut1").attr("src", "images/tshirt.jpg");
+            })
+    })
+</script>
+{% endblock %}
+
+
+
+
+    
+
+

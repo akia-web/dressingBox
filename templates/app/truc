@@ -3,18 +3,10 @@
 {% block title %}Hello AppController!{% endblock %}
 
 {% block body %}
-<div class="row">
-<div style="background-color:#C2ABAE;height: 100px" class="col-md-6" >
-  <h1 style="line-height: 80px"> Bienvenue sur mon compte</h1> 
-</div>
-<div class="col-md-6 " style="background-color:#C2ABAE;">
-  <h2 style="line-height: 50px"> Trouve ta tenue!</h2> 
-  <button style="border-radius: 7px"><a href="{{path('defilement')}}">Défilement</a> </button>
-  <button style="border-radius: 7px "><a href="{{path('aleatoire')}}">Aléatoire</a> </button>
-  <button style="border-radius: 7px "><a href="{{path('style')}}">Exceptionnel</a> </button>
-</div>
-  </div>
 
+<div style="background-color:#C2ABAE;height: 150px" >
+<h1 style="line-height: 120px">Mon compte</h1>
+</div>
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
@@ -35,6 +27,13 @@
 
 
 
+<h2> Trouve ta tenue!</h2> 
+<div>
+  <button><a href="{{path('defilement')}}">défilement</a> </button>
+  <button><a href="{{path('aleatoire')}}">aléatoire</a> </button>
+  <button><a href="{{path('style')}}">style</a> </button>
+</div> <br>
+  
 
 
 
@@ -61,16 +60,16 @@
       </div> <!-- fin 6 cases-->
 
      <div class="col-md-6">
-       <h2 style="text-align: center">Ajouter</h2>
+       <h2 style="text-align: center">Ajouter un vetêment</h2>
         <form action="" method="POST" >
-          <label for="categorie">Catégorie :</label>
+          <label for="categorie">Choisi ta catégorie :</label>
           <select name="categorie" id="categorie" required>
             <option value="haut">Haut</option>
             <option value="bas">Bas</option>
             <option value="chaussures">Chaussures</option>
           </select><br><br>
 
-          <label for="taille"> Taille (facultatif) :</label>
+          <label for="taille">Choisi ta taille (facultatif) :</label>
           <select name="taille" id="taille">
               <option value="">--</option>
               <option value="xs">XS</option>
@@ -84,7 +83,7 @@
           <label for="marque">Marque (facultatif)</label>
           <input type="text" name="marque" id="marque"><br><br>
 
-          <label for="couleur">Couleur :</label>
+          <label for="couleur">Choisi ta couleur :</label>
             <select name="couleur" id="couleur" required>
               <option value="noir">Noir</option>
               <option value="rouge">Rouge</option>
@@ -92,7 +91,7 @@
               <option value="bleu">Bleu</option>
             </select><br><br>
 
-          <label for="style">Style :</label>
+          <label for="style">Choisi ton style :</label>
             <select name="style" id="style" required>
               <option value="sportswear">Sportswear</option>
               <option value="classic">Classic</option>
@@ -109,7 +108,7 @@
   
      {% if app.user %}
         <div class="mb-3">
-            Vous êtes connecté sur {{ app.user.username }}, <a href="{{ path('app_logout') }}">Vous déconnecter</a>
+            vous êtes connecté sur {{ app.user.username }}, <a href="{{ path('app_logout') }}">vous deconnecter</a>
         </div>
     {% endif %}
     </div><!-- fin div 6-->
@@ -136,7 +135,7 @@
     <div class="row">
     <div class="md-2">
     <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : haut.id}) }}"><img src="images/{{haut.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
-    <p style="margin-left : 60px"><a href="{{path("delete",{'id': haut.id}) }}">Supprimer </a> </p>
+    <p style="margin-left : 60px"><a href="{{path("delete",{'id': haut.id}) }}">supprimer </a> </p>
     </div>
     <div>
     {% endfor %}
@@ -149,7 +148,7 @@
     <div class="row">
     <div class="md-2">
      <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : ba.id}) }}"><img src="images/{{ba.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
-    <p style="margin-left : 60px"><a href="{{path("delete",{'id': ba.id}) }}">Supprimer </a> </p>
+    <p style="margin-left : 60px"><a href="{{path("delete",{'id': ba.id}) }}">supprimer </a> </p>
     </div>
     <div>
     {% endfor %}
@@ -163,7 +162,7 @@
     <div class="row">
     <div class="md-2">
    <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : chaussure.id}) }}"><img src="images/{{chaussure.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
-    <p style="margin-left : 60px"><a href="{{path("delete",{'id': chaussure.id}) }}">Supprimer </a> </p>
+    <p style="margin-left : 60px"><a href="{{path("delete",{'id': chaussure.id}) }}">supprimer </a> </p>
     </div>
     <div>
     {% endfor %}

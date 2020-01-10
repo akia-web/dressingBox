@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Vetement2{% endblock %}
+
+{% block body %}
+    <h1>Create new Vetement2</h1>
+
+    {{ include('vetement2/_form.html.twig') }}
+
+    <a href="{{ path('vetement2_index') }}">back to list</a>
+{% endblock %}
