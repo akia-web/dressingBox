@@ -3,17 +3,17 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-<header style="background-color: #C2ABAE">
+<header >
 
-<div class="row">
+<div class="row" style>
  
 
-<div class="col-md-6" style=" margin-top : 30px">
-<H1>DRESSING BOX</H1>   
+<div class="col-md-2" style=" ; background-color: white; border: 1px solid #b4a696">
+<img src="images/logo_burned.png" alt="" style="width:100%;margin-top : 20px ">  
 </div> <!-- les 6 premières cases de la ligne-->
 
-
-<div class="col-md-2" ><!-- les 2 suivants-->
+<div class="col-md-4" style="background-color: #C2ABAE"></div>
+<div class="col-md-2" style="background-color: #C2ABAE" ><!-- les 2 suivants-->
     <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -22,12 +22,12 @@
     
 
 
-        <label for="inputEmail">Email</label>
+        <label style="color:#181616" for="inputEmail">Email</label>
         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus style="width:300px; border:#645D5E">
 </div> <!-- ferme les 2 cases -->
 
-<div class="col-md-2" ><!-- les 2 suivants-->
-    <label for="inputPassword">Password</label>
+<div class="col-md-2" style="background-color: #C2ABAE"><!-- les 2 suivants-->
+    <label style="color:#181616" for="inputPassword">Password</label>
     <input type="password" name="password" id="inputPassword" class="form-control" required style="width:300px; border:#645D5E">
 </div> <!-- ferme les 2 cases -->
    
@@ -47,7 +47,7 @@
 
 
 
-<div class="col-md-2"><!-- les 2 suivants--> 
+<div class="col-md-2" style="background-color: #C2ABAE"><!-- les 2 suivants--> 
 
     <div class="col-md-2" style="margin-top: 25px">
         <button class="btn btn-lg btn-primary" type="submit" style="height : 40px; line-height : 20px; background-color: #645D5E; border: 1px solid #645D5E">
@@ -65,8 +65,8 @@
 </nav>
 </header>
 
-<div class="row"  style="background-color: #72484E ">
-<div class="col-md-3";>
+
+{# <div class="col-md-3";>
 <img src="images/totoro_burned.png" alt="" style="height:300px; "><br>
 <img src="images/plus_burned.png" alt="" style="height:50px; margin-left: 115px " ><br>
 <img src="images/jean2_burned.png" alt="" style="height:300px; margin-left: 50px"><br>
@@ -79,34 +79,21 @@
 <img src="images/plus_burned.png" alt="" style="height:50px; margin-left: 115px " ><br>
 <img src="images/pantalon2.png" alt="" style="height:300px; margin-left: 50px"><br>
 <img src="images/plus_burned.png" alt="" style="height:50px; margin-left: 115px "><br>
-<img src="images/top-ten.png" alt="" style="height:100px; margin-left: 100px"><br>
+<img src="images/top-ten.png" alt="" style="height:100px; margin-left: 100px"><br> #}
 
 </div>
 
-<div class="md-6" >
+<div style = "background-image:url('images/795910.jpg'); height:88vh; width:100% ; background-size:cover" >
 {% if app.user %}
         
-        <h2 style="font-family: 'Ibarra Real Nova', serif; text-align: center;">Choisi ton style!</h2>
-
-        <p>rien de plus simple, <br>
-        - 1 haut + <br>
-        - 1 bas + <br>
-        - 1 paire de chaussure</p>
-        <img src="images/dressing.jpg" alt="" style="height :598px; widht : 899px " >
-
-            <div class="mb-3">
-            <p class = "text-right">vous êtes connecté sur {{ app.user.username }}, <a href="{{ path('app_logout') }}">vous deconnecter</a></p>
+           
+            <p class = "text-right">vous êtes connecté sur {{ app.user.username }}, <a style="color:#181616"    href="{{ path('app_logout') }}">vous deconnecter</a></p>
         </div>
     {% else %}
 
- 
-        <h2 style="font-family: 'Ibarra Real Nova', serif; text-align: center;">Choisi ton style!</h2>
 
-        <p>Compose ta tenue en quelques clics</p>
-        <img src="images/dressing.jpg" alt="" style="height :598px; widht : 899px " >
-
-        <h3>Tu n'es pas encore inscrit ?!</h3>
-        <a  href="{{ path('app_register') }}">S'inscrire</a>
+    <h3 style="color:#181616">Tu n'es pas encore inscrit ?!</h3>
+    <a  style="color:black"href="{{ path('app_register') }}">S'inscrire</a>
 
 
 

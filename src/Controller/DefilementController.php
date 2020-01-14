@@ -13,18 +13,25 @@ class DefilementController extends AbstractController
     /**
      * @Route("/defilement", name="defilement")
      */
-    public function defilement( Vetement2 $vetement, Vetement2Repository $repo, Request $req){
-    // $haut = $repo->findBy(['categorie'=>'haut']);
-    
-    // $connectedUser = $this->getUser();
-    // $utilisateur = $connectedUser->getUtilisateur();
-   
-
-        return $this->render('app/defilement.html.twig',);
+    public function defilement(Vetement2Repository $repo){
+      
+                // On récupère l'user connecté
+                $connectedUser = $this->getUser();
+                // Puis on récupère l'utilisateur :
+               $utilisateur = $connectedUser->getUtilisateur();
+        // $haut = $repo->findBy([ 'categorie'=>'haut',"utilisateur" => $utilisateur ]);
+        $haut = $repo->findBy([ 'categorie'=>'haut',  'client_id' => $utilisateur ]);
+        $bas =$repo->findBy(['categorie' => 'bas','client_id' => $utilisateur  ]);
+        $chaussure = $repo->findBy(['categorie' => 'chaussures', 'client_id' => $utilisateur ]);
+        return $this->render("app/defilement.html.twig", [
+            'hauts'=> $haut,
+            'bas' => $bas,
+            'chaussures' => $chaussure,
+        ]);
+     }
     }
 
-
     
-}
+
 
 

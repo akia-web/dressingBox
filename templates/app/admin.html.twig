@@ -1,18 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AppController!{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-<div class="row">
-<div style="background-color:#C2ABAE;height: 100px" class="col-md-6" >
-  <h1 style="line-height: 80px"> Bienvenue sur mon compte</h1> 
-</div>
-<div class="col-md-6 " style="background-color:#C2ABAE;">
-  <h2 style="line-height: 50px"> Trouve ta tenue!</h2> 
-  <button style="border-radius: 7px"><a href="{{path('defilement')}}">Défilement</a> </button>
-  <button style="border-radius: 7px "><a href="{{path('aleatoire')}}">Aléatoire</a> </button>
-  <button style="border-radius: 7px "><a href="{{path('style')}}">Exceptionnel</a> </button>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6" style="background-color:#C2ABAE;height: 100px">
+      <h1 style="line-height: 80px; font-family: 'Lobster', cursive;"> Bienvenue sur mon compte</h1> 
+    </div>
+    <div class="col-md-6" style="background-color:#C2ABAE;">
+      <h2 style="line-height: 50px"> Trouve ta tenue!</h2> 
+      <button style="border-radius: 7px"><a style="color:black" href="{{path('defilement')}}">Défilement</a> </button>
+      <button style="border-radius: 7px "><a style="color:black"href="{{path('aleatoire')}}">Aléatoire</a> </button>
+      <button style="border-radius: 7px "><a style="color:black" href="{{path('classic')}}">Ton Style</a> </button>
+    </div>
   </div>
 
 <ul class="nav nav-tabs">
@@ -20,48 +21,70 @@
     <a class="nav-link active" data-toggle="tab" href="#home">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#tenue">Mon Dressing</a>
+    <a class="nav-link" data-toggle="tab" style="color:black" href="#tenue">Mon Dressing</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Favoris</a>
+    <a class="nav-link" style="color:black" href="#">Favoris</a>
   </li>
-  </ul>
-
-
+</ul>
 
 <div id="myTabContent" class="tab-content">
   <div class="tab-pane fade show active" id="home">
-
-
-
-
-
-
-
     <div class="row">
-      <div class="col-md-6" style="">
+      <div class="col-md-8" style="">
 
     
-        <h2>Haut</h2>
+        <style type="text/css"> 
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.slideshow{
+    width: 600px;
+    height: 200px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+.slideshow ul{
+    display:flex;
+    width: 100%;
+    height: 200px;
+    list-style: none;
+}
+.slideshow ul{
+    float: left;
+}
+</style>
+<p>Haut</p>
+<div class="slideshow">
+    <ul>
         {% for haut in hauts %}
-       <img src="uploads/{{ haut.photo }}" style="height:100px">
+        <li> <img src="uploads/{{haut.photo}}" alt="" style="height : 200px; width: 150px" > </li>
         {% endfor %}
-
-
-       <h2>Bas</h2>
+    </ul><!--fin de la div carousel-slide-->
+</div>
+     <p>Bas</p>  
+<div class="slideshow">
+    <ul>
         {% for ba in bas %}
-      <img src="uploads/{{ ba.photo }}" style="height:100px">
+        <li> <img src="uploads/{{ba.photo}}" alt="" style="height : 200px; width: 150px" > </li>
         {% endfor %}
-
-
-        <h2>Chaussures</h2>
+    </ul><!--fin de la div carousel-slide-->
+</div>
+<p>Chaussures</p>
+<div class="slideshow">
+    <ul>
         {% for chaussure in chaussures %}
-        <img src="uploads/{{ chaussure.photo }}" style="height:100px">
+        <li> <img src="uploads/{{chaussure.photo}}" alt="" style="height : 200px; width: 150px" > </li>
         {% endfor %}
+    </ul><!--fin de la div carousel-slide-->
+</div>
+
       </div> <!-- fin 6 cases-->
 
-     <div class="col-md-6">
-       <h2 style="text-align: center">Ajouter</h2>
+     <div class="col-md-4">
+       <h2 style="text-align: center; font-family: 'Lobster', cursive;">Ajouter</h2>
         <form action="" method="POST" enctype="multipart/form-data" >
           <label for="categorie">Catégorie :</label>
           <select name="categorie" id="categorie" required>
@@ -116,7 +139,7 @@
   
      {% if app.user %}
         <div class="mb-3">
-            Vous êtes connecté sur {{ app.user.username }}, <a href="{{ path('app_logout') }}">Vous déconnecter</a>
+            Vous êtes connecté sur {{ app.user.username }}, <a style="color:black" href="{{ path('app_logout') }}">Vous déconnecter</a>
         </div>
     {% endif %}
     </div><!-- fin div 6-->
@@ -138,16 +161,18 @@
 
 <h3>Hauts</h3>
 
-<ul>
+
     {% for haut in hauts %}
-    <div class="row">
-    <div class="md-2">
-    <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : haut.id}) }}"><img src="uploads/{{haut.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
-    <p style="margin-left : 60px"><a href="{{path("delete",{'id': haut.id}) }}">Supprimer </a> </p>
-    </div>
-    <div>
+
+      <div style="display: inline-block;">
+        <a href="{{path("detail",{'id' : haut.id}) }}"><img src="uploads/{{haut.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a>
+        <br>
+        <a href="{{path("delete",{'id': haut.id}) }}">Supprimer </a>
+      </div>
+      
+    
     {% endfor %}
-</ul>
+
 
 <h3>Bas</h3>
 
@@ -183,5 +208,6 @@
 
 
 </div><!-- fin de tenue-->
+</div>
 
 {% endblock %}

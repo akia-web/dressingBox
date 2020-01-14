@@ -1,33 +1,41 @@
 {% extends 'base.html.twig' %}
-
-
-
 {% block body %}
+
+<div class="row">
+  <div class="col-md-2" style=" ; border: 1px solid #b4a696">
+  <img src="images/logo_burned.png" alt="" style="width:100%;margin-top : 20px "></div>
+<div style="background-color:black;height: 100px" class="col-md-4" >
+</div>
+<div class="col-md-6 " style="background-color:black;">
+  <h2 style="line-height: 50px; font-family: 'Lobster', cursive; color: white"> Trouve ta tenue!</h2> 
+  <button style="border-radius: 7px" ><a style="color:black" href="{{path('defilement')}}">Défilement</a> </button>
+  <button style="border-radius: 7px "><a style="color:black" href="{{path('dressing')}}">Dressing</a> </button>
+  <button style="border-radius: 7px "><a style="color:black" href="{{path('classic')}}">Ton Style</a> </button>
+</div>
+  </div>
+  <div class="container" style="background:#E6CBB3">
+  <div style=" height:90vh">
 <div>
-<h1 style="text-align:center">LAISSE NOUS T'HABILLER</h1>
-<h3 style="text-align:center">Mix selon ton humeur</h3>
-<div style="margin:auto; width: 20%;;background-color:" >
-
-
-
-<div >
-   <img src="images/totoro.jpg" alt="" style="height :200px; width: 200px; border: 1px solid black" id="haut1" > 
-</div>
-
-
-
-
+<h3 style="text-align:center; font-family: 'Lobster', cursive">Mélange le tout !</h3>
+<div style="margin:auto; width: 20%; background-color:" >
 <div>
- <img src="images/jean2.jpg" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > 
+ {% for haut in hauts  %}
+  <img src="uploads/{{haut.photo}}"  style="height : 200px; width: 200px; border: 1px solid black" class="haut">
+  {% endfor %}
+{% for  ba in bas %}
+ <img src="uploads/{{ba.photo}}" alt="" style="height :200px; width : 200px; border: 1px solid black" class="bas" > 
+   {% endfor %}
+{% for  chaussure in chaussures %}
+  <img src="uploads/{{chaussure.photo}}" alt="" style="height :200px; width : 200px; border: 1px solid black" class="chaussures" > 
+{% endfor %}
 </div>
-   
-<div>
-  <img src="images/top-ten.gif" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > 
-</div>
-
-<button style="margin-left: 75px;background-color:red">Mix !</button>
+<div style="height:2vh"></div>
+<button style="width: 20vh; background:black" type="button" class="btn btn-secondary" id="boutonMix">Mix</button>
 </div>
 </div>
-<button><a href="{{path('dressing')}}">retour</button></a>
-
+</div>
+</div>
+{% endblock %}
+ {% block javascripts %}
+ <script src="aleatoire.js"></script>  
 {% endblock %}

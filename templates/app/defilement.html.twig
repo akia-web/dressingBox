@@ -1,52 +1,83 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block body %}
-<div>
-<h1 style="text-align:center">CHOISIS TON STYLE</h1>
-<h3 style="text-align:center">clique sur les flèches</h3>
-<div style="margin:auto; width: 20%;" >
-
-
-
-<div ><!--debut du caroussel-->
-   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"><!--debut id caroussel-->
-  <div class="carousel-inner"> <!--debut classe caroussel inner-->
-    <div class="carousel-item active"><!--debut classe carousel active-->
-
-    {% for haut in hauts %}
-      <img class="d-block w-100" src="uploads/{{haut.image}}" alt="First slide">
-      {% endfor %}
-    </div> <!--fin de div classe caroussel active-->
+<div class="row">
+  <div class="col-md-2" style=" ; background-color: white; border: 1px solid #b4a696">
+  <img src="images/logo_burned.png" alt="" style="width:100%;margin-top : 20px "></div>
+<div style="background-color:black;height: 100px" class="col-md-4" >
+</div>
+<div class="col-md-6 " style="background-color:black;">
+  <h2 class="text-align:right" style="line-height: 50px; color: #fff; font-family: 'Lobster', cursive"> Trouve ta tenue!</h2> 
+  <button style="border-radius: 7px;"><a style="color:black" href="{{path('dressing')}}">Dressing</a> </button>
+  <button style="border-radius: 7px "><a style="color:black" href="{{path('aleatoire')}}">Aléatoire</a> </button>
+  <button style="border-radius: 7px "><a style="color:black" href="{{path('classic')}}">Ton Style</a> </button>
+</div>
+  </div>
+<style type="text/css"> 
+body{
+  background:   ;
+}
+.coucou {
+    display:flex;
   
-  </div><!--fin classe caroussel inner-->
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div> <!-- fin id caroussel-->
-</div><!-- fin du caroussel-->
+}
+
+.coucou2{
+  width: 21%;
+
+  margin: auto;
+}
+{# body{
+  background-image: url('images/dressing2.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+} #}
+</style>
+<div class="container" style="background:#E6CBB3">
+<div style=" height:90vh">
+<div style="height:2vh"></div>
+<div><h3 style="text-align:center; font-family: 'Lobster', cursive;">A toi de cliquer !</h3></div><br>
+  <div class="container">
+  <div style="width:24%; margin:auto">
+    <div class="coucou">
+    <button style="background-color:black; border:black" type="button" class="btn btn-secondary" onclick="plusDivs(-1)">&#10094;</button>
+      {% for haut in hauts %}
+      <img src="uploads/{{haut.photo}}"  style="height : 200px; opacity:1; width: 200px" class="mySlides">
+    {% endfor %}
+    <button style="background-color:black; border:black" type="button" class="btn btn-secondary" onclick="plusDivs(+1)" style="height : 100px; display:center">&#10095;</button>
+    </div>
 
 
+  <div class="coucou">
+    <button style="background-color:black; border:black" type="button" class="btn btn-secondary" onclick="plusDivsBas(-1)">&#10094;</button>
+    {% for ba in bas %}
+      <img src="uploads/{{ba.photo}}"  style="height : 200px; width: 200px" class="mySlides1">
+    {% endfor %}
+      <button style="background-color:black; border:black" type="button" class="btn btn-secondary"  onclick="plusDivsBas(+1)">&#10095;</button>
+  </div>
 
+  <div class="coucou">
+    <button style="background-color:black; border:black" type="button" class="btn btn-secondary" onclick="plusDivsFoot(-1)">&#10094;</button>
+    {% for chaussure in chaussures %}
+    <img src="uploads/{{chaussure.photo}}" style="height : 200px; width: 200px" class="mySlides2">
+    {% endfor %}
+    <button style="background-color:black; border:black" type="button" class="btn btn-secondary" onclick="plusDivsFoot(+1)">&#10095;</button>
+    </div>
+</div>
+</div>  
 
-<div>
- <button><</button> <img src="images/jean2.jpg" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > <button>></button>
 </div>
-   
-<div>
-  <button><</button> <img src="images/top-ten.gif" alt="" style="height :200px; width : 200px; border: 1px solid black" id="haut1" > <button>></button>
+  <div class="col-md-4" style="background:red">
 </div>
 </div>
 </div>
-<button><a href="{{path('dressing')}}">retour</button>
 {% endblock %}
 
+ {% block javascripts %}
+
+ <script src="defilement.js"></script>  
+       
+{% endblock %}
 
 
 

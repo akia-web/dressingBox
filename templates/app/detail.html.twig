@@ -4,16 +4,17 @@
 
 <div class="row">
 <div class="col-md-6">
-<img src="images/{{ vetement.photo }}">
+<img src="uploads/{{ vetement.photo }}">
+<span>{{vetement.photo}}</span>
 </div>
 
 <div class="col-md-6">
-<h2>catégorie : {{vetement.categorie}}</h2>
-<h2>couleur : {{vetement.couleur}}</h2>
-<h2>taille : {{vetement.taille}}</h2>
-<h2>marque : {{vetement.marque}}</h2>
-<h2>style : {{vetement.style}}</h2>
-<a href="{{path('dressing')}}"> retour au dressing </a>
+<h2>Catégorie : {{vetement.categorie}}</h2>
+<h2>Couleur : {{vetement.couleur}}</h2>
+<h2>Taille : {{vetement.taille}}</h2>
+<h2>Marque : {{vetement.marque}}</h2>
+<h2>Style : {{vetement.style}}</h2>
+<a href="{{path('dressing')}}"> Retour au dressing </a>
 </div>
 </div>
 {% endblock %}
