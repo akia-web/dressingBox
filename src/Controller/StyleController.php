@@ -17,9 +17,11 @@ class StyleController extends AbstractController
     public function sportwear(Vetement2Repository $repo)
     {
 
-        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'sportswear']);
-        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'sportswear' ]);
-        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'sportswear'));
+        $connectUser= $this->getUtilisateur();
+        $utilisateur= $connectUser->getUtilisateur();
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'sportswear', 'id_client'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'sportswear', 'id_client'=>$utilisateur ]);
+        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'sportswear', 'id_client'=>$utilisateur));
 
 
 
@@ -36,9 +38,9 @@ class StyleController extends AbstractController
     public function classic(Vetement2Repository $repo)
     {
 
-        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'classic']);
-        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'classic' ]);
-        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'classic'));
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'classic', 'id_client'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'classic', 'id_client'=>$utilisateur ]);
+        $chaussure = $repo->findBy(['categorie' => 'chaussures', 'style' => 'classic', 'id_client'=>$utilisateur]);
 
 
 
@@ -48,7 +50,42 @@ class StyleController extends AbstractController
             'chaussures' => $chaussure,
         ]);
     }
+  /**
+     * @Route("/chic", name="chic")
+     */
+    public function chic(Vetement2Repository $repo)
+    {
 
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'chic', 'id_client'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'chic', 'id_client'=>$utilisateur ]);
+        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'chic', 'id_client'=>$utilisateur));
+
+
+
+        return $this->render('app/style.html.twig',[
+            'hauts'=> $haut,
+            'bas' => $bas,
+            'chaussures' => $chaussure,
+        ]);
+    }
+/**
+     * @Route("/cocooning", name="cocooning")
+     */
+    public function cocooning(Vetement2Repository $repo)
+    {
+
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'cocooning', 'id_client'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'cocooning', 'id_client'=>$utilisateur ]);
+        $chaussure = $repo->findBy(['categorie' => 'chaussures', 'style' => 'cocooning', 'id_client'=>$utilisateur]);
+
+
+
+        return $this->render('app/style.html.twig',[
+            'hauts'=> $haut,
+            'bas' => $bas,
+            'chaussures' => $chaussure,
+        ]);
+    }
 
 
 

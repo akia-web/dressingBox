@@ -57,7 +57,7 @@ class DressingController extends AbstractController
             
             //Désormais il faut enregistrer le fichier sur le disque dur :
           
-            $file->move($this->calculatePortablePath("C:\\Users\\Etudiant\\Desktop\\test\\public\\uploads\\"), $fileName);
+            $file->move($this->calculatePortablePath("C:\\Users\\HP\\Desktop\\dressingBox\\public\\uploads\\"), $fileName);
            
             $em->persist($vetement);
             $em->persist($utilisateur);
