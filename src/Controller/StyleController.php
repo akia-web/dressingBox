@@ -17,11 +17,11 @@ class StyleController extends AbstractController
     public function sportwear(Vetement2Repository $repo)
     {
 
-        $connectUser= $this->getUtilisateur();
+        $connectUser= $this->getUser();
         $utilisateur= $connectUser->getUtilisateur();
-        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'sportswear', 'id_client'=>$utilisateur]);
-        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'sportswear', 'id_client'=>$utilisateur ]);
-        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'sportswear', 'id_client'=>$utilisateur));
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'sportswear', 'client_id'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'sportswear', 'client_id'=>$utilisateur ]);
+        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'sportswear', 'client_id'=>$utilisateur));
 
 
 
@@ -37,10 +37,11 @@ class StyleController extends AbstractController
      */
     public function classic(Vetement2Repository $repo)
     {
-
-        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'classic', 'id_client'=>$utilisateur]);
-        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'classic', 'id_client'=>$utilisateur ]);
-        $chaussure = $repo->findBy(['categorie' => 'chaussures', 'style' => 'classic', 'id_client'=>$utilisateur]);
+        $connectUser= $this->getUser();
+        $utilisateur= $connectUser->getUtilisateur();
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'classic', 'client_id'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'classic', 'client_id'=>$utilisateur ]);
+        $chaussure = $repo->findBy(['categorie' => 'chaussures', 'style' => 'classic', 'client_id'=>$utilisateur]);
 
 
 
@@ -55,10 +56,11 @@ class StyleController extends AbstractController
      */
     public function chic(Vetement2Repository $repo)
     {
-
-        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'chic', 'id_client'=>$utilisateur]);
-        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'chic', 'id_client'=>$utilisateur ]);
-        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'chic', 'id_client'=>$utilisateur));
+        $connectUser= $this->getUser();
+        $utilisateur= $connectUser->getUtilisateur();
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'chic', 'client_id'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'chic', 'client_id'=>$utilisateur ]);
+        $chaussure = $repo->findBy(array('categorie' => 'chaussures', 'style' => 'chic', 'client_id'=>$utilisateur));
 
 
 
@@ -73,10 +75,11 @@ class StyleController extends AbstractController
      */
     public function cocooning(Vetement2Repository $repo)
     {
-
-        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'cocooning', 'id_client'=>$utilisateur]);
-        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'cocooning', 'id_client'=>$utilisateur ]);
-        $chaussure = $repo->findBy(['categorie' => 'chaussures', 'style' => 'cocooning', 'id_client'=>$utilisateur]);
+        $connectUser= $this->getUser();
+        $utilisateur= $connectUser->getUtilisateur();
+        $haut = $repo->findBy([ 'categorie'=>'haut', 'style' => 'cocooning', 'client_id'=>$utilisateur]);
+        $bas =$repo->findBy(['categorie' => 'bas', 'style' => 'cocooning', 'client_id'=>$utilisateur ]);
+        $chaussure = $repo->findBy(['categorie' => 'chaussures', 'style' => 'cocooning', 'client_id'=>$utilisateur]);
 
 
 

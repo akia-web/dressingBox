@@ -6,6 +6,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 require dirname(__DIR__).'/config/bootstrap.php';
 
+//A ne pas garder pour la prod
+//parceque honnêtement, je suis un pied pour symfo 4
+//donc je fou ça là
+//mais ça devrait pas voili voilou
+//gros bisous
+Debug::enable();
+
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
 

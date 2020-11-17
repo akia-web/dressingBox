@@ -44,7 +44,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("register", name="app_register")
+     * @Route("/register", name="app_register")
      */
     public function register(Request $req, UserPasswordEncoderInterface $encoder ){
         if ($req->isMethod('POST')){
@@ -69,102 +69,81 @@ class SecurityController extends AbstractController
         return $this->render("security/register.html.twig");
     }
 
-    // /**
-    //  * @Route("/", name="register2")
-    //  */
-    // public function inscription(Request $request){
-    //     $em=$this->getDoctrine()->getManager();
-    //     $inscription = new Utilisateur();
-    //     $form = $this->createForm(InscriptionFormType::class, $inscription);
-    //     $form->handleRequest($request);
+   
+     /**
+      * @Route ("/forgottenpassword", name="app_forgotten_password")
+      */
+      public function forgottenPassword(Request $req, TokenGeneratorInterface $tokenGenerator, MailerInterface $mailer){
+          return $this->json("ta maman");
+      }
 
-    //     if($form->isSubmitted()&& $form->isValid()){
-    //         $em->persist($inscription);
+    //  public function forgottenPassword(Request $req, TokenGeneratorInterface $tokenGenerator, MailerInterface $mailer){
+    //      if($req->isMethod('POST')){
+    //          $email = $req->request->get('email');
+    //          $repo = $this->getDoctrine()->getRepository(User::class);
+    //          $user = $repo->findOneByEmail($email);
+
+    //          if($user===null){
+    //              $this->addFlash('danger','lalala trompé!');
+    //              return $this->redirectToRoute('home');
+    //             }
+
+
+    //          $em= $this->getDoctrine()->getManager();
+    //          $token = $tokenGenerator -> generateToken();
+             
+    //          try{
+    //              $user->setToken($token);
+    //              $em->persist($user);
+    //              $em->flush();
+    //          }catch(\throwable $th){
+    //              $this->addFlash('danger','erreur');
+    //              return $this->redirectToRoute('home');
+    //          }
+
+
+    //          $url = $this->generateUrl('app_reset_password', ['token'=> $token]);
+
+    //          $email = (new Email())
+    //          ->from('ch.royer15@gmail.com')
+    //          ->to ($user->getEmail())
+    //          ->subject('réinitialisation du mot de passe')
+    //          ->html('<p>lien ; '. $url. '</p>');
+
+    //          $mailer->send($email);
+    //          $this->addFlash('notice','message envoyé');
+    //          return $this->redirectToRoute('home');
+
+    //      }
+    //     return $this->render('security/forgottenpassword.html.twig');
+    //  }
+
+    //     /**
+    //  * @Route ("/reset_password/{token}", name="app_reset_password")
+    //  */
+    // public function resetPassword(Request $req, string $token, UserPasswordEncoderInterface $encoder){
+    //     if($req->isMethod('POST')){
+    //         $em= $this->getDoctrine()->getManager();
+    //         $repo = $this->getDoctrine()->getRepository(User::class);
+
+    //         $user = $repo->findOneByToken($token);
+    //         if($user === null){
+    //             $this->addFlash('danger', 'token inconnu...');
+    //             return $this->redirectToRoute('home');
+    //         }
+
+    //         $user->setToken(null);
+    //         $user->setPassword($encoder->encodePassword($user, $req->get('password')));
+    //         $em->persist($user);
     //         $em->flush();
-    //         return $this->redirectToRoute('app_login');
+    //         $this->addFlash('notice', 'mot de passe enregistré');
+    //         $this->redirectToRoute('home');
     //     }
-    //     return $this->render('security/login.html.twig',[
-    //         'blabla' => $form->createView(),
+
+    //     return $this->render('security/reset_password.html.twig',[
+    //         'token'=> $token
     //     ]);
     // }
-
-
-
-
-
-
-
-    /**
-     * @Route ("/forgottenpassword", name="app_forgotten_password")
-     */
-
-     public function forgottenPassword(Request $req, TokenGeneratorInterface $tokenGenerator, MailerInterface $mailer){
-         if($req->isMethod('POST')){
-             $email = $req->request->get('email');
-             $repo = $this->getDoctrine()->getRepository(User::class);
-             $user = $repo->findOneByEmail($email);
-
-             if($user===null){
-                 $this->addFlash('danger','lalala trompé!');
-                 return $this->redirectToRoute('home');
-                }
-
-
-             $em= $this->getDoctrine()->getManager();
-             $token = $tokenGenerator -> generateToken();
-             
-             try{
-                 $user->setToken($token);
-                 $em->persist($user);
-                 $em->flush();
-             }catch(\throwable $th){
-                 $this->addFlash('danger','erreur');
-                 return $this->redirectToRoute('home');
-             }
-
-
-             $url = $this->generateUrl('app_reset_password', ['token'=> $token]);
-
-             $email = (new Email())
-             ->from('ch.royer15@gmail.com')
-             ->to ($user->getEmail())
-             ->subject('réinitialisation du mot de passe')
-             ->html('<p>lien ; '. $url. '</p>');
-
-             $mailer->send($email);
-             $this->addFlash('notice','message envoyé');
-             return $this->redirectToRoute('home');
-
-         }
-        return $this->render('security/forgottenpassword.html.twig');
-     }
-
-        /**
-     * @Route ("/reset_password/{token}", name="app_reset_password")
-     */
-    public function resetPassword(Request $req, string $token, UserPasswordEncoderInterface $encoder){
-        if($req->isMethod('POST')){
-            $em= $this->getDoctrine()->getManager();
-            $repo = $this->getDoctrine()->getRepository(User::class);
-
-            $user = $repo->findOneByToken($token);
-            if($user === null){
-                $this->addFlash('danger', 'token inconnu...');
-                return $this->redirectToRoute('home');
-            }
-
-            $user->setToken(null);
-            $user->setPassword($encoder->encodePassword($user, $req->get('password')));
-            $em->persist($user);
-            $em->flush();
-            $this->addFlash('notice', 'mot de passe enregistré');
-            $this->redirectToRoute('home');
-        }
-
-        return $this->render('security/reset_password.html.twig',[
-            'token'=> $token
-        ]);
-    }
 
  /**
      * @Route ("/log", name="log")

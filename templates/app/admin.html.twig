@@ -60,7 +60,7 @@
 <div class="slideshow">
     <ul>
         {% for haut in hauts %}
-        <li> <img src="uploads/{{haut.photo}}" alt="" style="height : 200px; width: 150px" > </li>
+        <li> <img src="http://akia.re/dressingBox/public/uploads/{{haut.photo}}" alt="" style="height : 200px; width: 150px" > </li>
         {% endfor %}
     </ul><!--fin de la div carousel-slide-->
 </div>
@@ -68,7 +68,7 @@
 <div class="slideshow">
     <ul>
         {% for ba in bas %}
-        <li> <img src="uploads/{{ba.photo}}" alt="" style="height : 200px; width: 150px" > </li>
+        <li> <img src="http://akia.re/dressingBox/public/uploads/{{ba.photo}}" alt="" style="height : 200px; width: 150px" > </li>
         {% endfor %}
     </ul><!--fin de la div carousel-slide-->
 </div>
@@ -76,7 +76,7 @@
 <div class="slideshow">
     <ul>
         {% for chaussure in chaussures %}
-        <li> <img src="uploads/{{chaussure.photo}}" alt="" style="height : 200px; width: 150px" > </li>
+        <li> <img src="http://akia.re/dressingBox/public/uploads/{{chaussure.photo}}" alt="" style="height : 200px; width: 150px" > </li>
         {% endfor %}
     </ul><!--fin de la div carousel-slide-->
 </div>
@@ -151,62 +151,37 @@
 
 
   <div class="tab-pane fade" id="tenue">
-  
-  <h1>Ma Collection !</h1>
-
-  
-
-
-
-
-<h3>Hauts</h3>
-
-
-    {% for haut in hauts %}
-
-      <div style="display: inline-block;">
-        <a href="{{path("detail",{'id' : haut.id}) }}"><img src="uploads/{{haut.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a>
-        <br>
-        <a href="{{path("delete",{'id': haut.id}) }}">Supprimer </a>
-      </div>
-      
     
+    <h1>Ma Collection !</h1>
+    <h3>Hauts</h3>
+      {% for haut in hauts %}
+
+        <div style="display: inline-block;">
+          <a href="{{path("detail",{'id' : haut.id}) }}"><img src="http://akia.re/dressingBox/public/uploads/{{haut.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a>
+          <br>
+          <a href="{{path("delete",{'id': haut.id}) }}">Supprimer </a>
+        </div>
+        {% endfor %}
+
+
+    <h3>Bas</h3>
+      {% for ba in bas %}
+       <div style="display: inline-block;">
+          <a href="{{path("detail",{'id' : ba.id}) }}"><img src="http://akia.re/dressingBox/public/uploads/{{ba.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a>
+          <br>
+          <a href="{{path("delete",{'id': ba.id}) }}">Supprimer </a>
+        </div>
+      {% endfor %}
+
+    <h3>Chaussures</h3>
+      {% for chaussure in chaussures %}
+        <div style="display: inline-block;">
+          <a href="{{path("detail",{'id' : chaussure.id}) }}"><img src="http://akia.re/dressingBox/public/uploads/{{chaussure.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a>
+          <br>
+          <a href="{{path("delete",{'id': chaussure.id}) }}">Supprimer </a>
+      </div>
     {% endfor %}
-
-
-<h3>Bas</h3>
-
-<ul>
-    {% for ba in bas %}
-    <div class="row">
-    <div class="md-2">
-     <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : ba.id}) }}"><img src="uploads/{{ba.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
-    <p style="margin-left : 60px"><a href="{{path("delete",{'id': ba.id}) }}">Supprimer </a> </p>
-    </div>
-    <div>
-    {% endfor %}
-</ul>
-
-
-<h3>Chaussures</h3>
-
-<ul>
-    {% for chaussure in chaussures %}
-    <div class="row">
-    <div class="md-2">
-   <div style="margin: 10px 10px"><a href="{{path("detail",{'id' : chaussure.id}) }}"><img src="uploads/{{chaussure.photo}}" style="height:200px; width: 200px; border: 1px solid black"></a></div>
-    <p style="margin-left : 60px"><a href="{{path("delete",{'id': chaussure.id}) }}">Supprimer </a> </p>
-    </div>
-    <div>
-    {% endfor %}
-</ul>
-
-
-
  </div> <!-- fin de defilement -->
-
-
-
 </div><!-- fin de tenue-->
 </div>
 

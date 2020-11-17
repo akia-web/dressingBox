@@ -42,31 +42,23 @@ class DressingController extends AbstractController
             $vetement->setMarque($req->request->get('marque'));
             $vetement->setCouleur($req->request->get('couleur'));
             $vetement->setClientId($utilisateur);
-            
-        
-  
+    
             //On récupère la photo :
-            //Ici avec $req->files->get() on récupère un objet de type FileBag cf code source : https://github.com/symfony/symfony/blob/2.8/src/Symfony/Component/HttpFoundation/File/UploadedFile.php
-            $file = $req->files->get("image"); 
-            
-            //PHP lorsqu'il reçoit un fichier uploadé, il l'enregistrer dans un endroit temporaire le temps que la requête soit traitée, donc il a un nom temporaire
+             $file = $req->files->get("image"); 
             //on récupère le nom original via : (cf : https://github.com/symfony/symfony/blob/2.8/src/Symfony/Component/HttpFoundation/File/UploadedFile.php#L77 )            
             $fileName = $file->getClientOriginalName();
             //Ici on enregistre JUSTE le nom du fichier (genre toto.jpg)
             $vetement->setPhoto($fileName); 
-            
             //Désormais il faut enregistrer le fichier sur le disque dur :
-          
-            $file->move($this->calculatePortablePath("C:\\Users\\HP\\Desktop\\dressingBox\\public\\uploads\\"), $fileName);
+            // var_dump($this->calculatePortablePath(__DIR__ . "/../../public/uploads")); die();
+            $file->move($this->calculatePortablePath(__DIR__ . "/../../public/uploads"), $fileName);
            
             $em->persist($vetement);
             $em->persist($utilisateur);
             $em->flush();
 
             return $this->redirectToRoute('dressing');
-        }
-
-         
+        }         
         return $this->render("app/admin.html.twig", [
             'hauts'=> $haut,
             'bas' => $bas,
@@ -74,7 +66,7 @@ class DressingController extends AbstractController
         ]);
     }
     
-
+    
     private function calculatePortablePath($path){
      
     

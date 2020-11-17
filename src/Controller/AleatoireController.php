@@ -21,10 +21,11 @@ class AleatoireController extends AbstractController
         // 
         //     return $this->render("dressing/truc.html.twig", $twigArgs);
         // }
-                // On récupère l'user connecté
-                $connectedUser = $this->getUser();
-                // Puis on récupère l'utilisateur :
-               $utilisateur = $connectedUser->getUtilisateur();
+        
+        // On récupère l'user connecté
+        $connectedUser = $this->getUser();
+        // Puis on récupère l'utilisateur :
+        $utilisateur = $connectedUser->getUtilisateur();
         // $haut = $repo->findBy([ 'categorie'=>'haut',"utilisateur" => $utilisateur ]);
         $haut = $repo->findBy([ 'categorie'=>'haut', 'client_id' => $utilisateur  ]);
         $bas =$repo->findBy(['categorie' => 'bas', 'client_id' => $utilisateur ]);

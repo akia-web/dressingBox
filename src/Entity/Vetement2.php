@@ -21,28 +21,6 @@ class Vetement2
      */
     private $id;
 
-    // /**
-    //  * @ORM\Column(type="string", length=255)
-    //  * @var string
-    //  */
-    // private $image;
-    
-    // /**
-    //  * @ORM\Column(type="datetime")
-    //  * @var \DateTime
-    //  */
-    // private $updatedAt;
-    // /**
-    //  * @var string|null
-    //  * @ORM\Column(type="string", length=255)
-    //  */
-    // private $filename;
-    // /**
-    //  * @var  File|null
-    //  * @Vich\UploadableField(mapping="property_image", fileNameProperty="filename")
-    //  */
-    // private $imageFile;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="vetement2s")
      * @ORM\JoinColumn(nullable=false)

@@ -3,7 +3,8 @@
 {% block title %}inscription{% endblock %}
 
 {% block body %}
-
+<style>
+</style>
 <div style="background-color:#C2ABAE;height: 100px" >
   <h1 style="line-height: 80px"> Inscription</h1> 
 </div>
@@ -11,29 +12,31 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
-<form method="post">
-<p>Nom<br>
-<input type="text" name="nom" placeholder="nom"required ></p>
-<p>Prénom<br>
-<input type="text" name="prenom" placeholder="prenom"required ><p>
-<label for="naissance">Date de Naissance</label><br>
-<input type="date" name="naissance" required> <br>
 
-<label for="">Civilité</label> <br>
- <input type="radio" id="femme"
-     name="sexe" value="femme">
-    <label for="femme">femme</label>
+            <form method="post" style="height: 70vh">
 
-<input type="radio" id="homme"
-     name="sexe" value="homme">
-    <label for="homme">homme</label> <br>
+                <label for="nom">Nom</label><br>
+                    <input type="text" name="nom" placeholder="nom"required ><br><br>
 
-<p>Email<br>
-<input type="email" name="email" placeholder="email" required></p>
-<p>Mot de Passe<br>
-<input type="password" name="password" placeholder="mot de passe" required ><br>
-<button type="submit"> s'inscrire</button><br>
-</form>
+                <label for="prenom">prenom</label><br>
+                    <input type="text" name="prenom" placeholder="prenom"required><br><br>
+
+                <label for="naissance">Date de Naissance</label><br>
+                    <input type="date" name="naissance" required> <br><br>
+
+                <label for="">Civilité</label> <br>
+                    <input type="radio" id="femme"name="sexe" value="femme">
+                        <label for="femme">femme</label>
+
+                    <input type="radio" id="homme"name="sexe" value="homme">
+                        <label for="homme">homme</label> <br><br>
+
+                <label for="email">Email</label><br>
+                    <input type="email" name="email" placeholder="email" required><br><br>
+                <label for="password">Mot De Passe</label><br>
+                    <input type="password" name="password" placeholder="mot de passe" required ><br><br>
+                <button type="submit"> s'inscrire</button><br>
+            </form>
 
         </div>
     </div>

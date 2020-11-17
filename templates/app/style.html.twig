@@ -5,7 +5,7 @@
 {% block body %}
 <div class="row">
   <div class="col-md-2" style=" ; background-color: white; border: 1px solid #b4a696">
-    <img src="images/logo_burned.png" alt="" style="width:100%;margin-top : 20px "></div>
+    <img src="http://akia.re/dressingBox/public/images/logo_burned.png" alt="" style="width:100%;margin-top : 20px "></div>
   <div style="background-color:black;height: 100px" class="col-md-4" ></div>
   <div class="col-md-6 " style="background-color:black;">
     <h2 style="color: white; line-height: 50px; font-family: 'Lobster', cursive"> Trouve ta tenue!</h2> 
@@ -17,32 +17,32 @@
   
   <div class="container-md" style="background:#E6CBB3; height: 90vh">
 
-  <div style="height:2vh"></div>
+    <div style="height:2vh"></div>
 
-  <div style="" >
-    <a href="{{path('sportwear')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 200px" id="sportwear">Sportswear</button></a>
-    <a href="{{path('classic')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 200px" id="classic">Classic</button></a>
-    <a href="{{path('chic')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 200px" id="sportwear">Chic</button></a>
-    <a href="{{path('cocooning')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 200px" id="classic">Cocooning</button></a>
-  </div>
+    <div style=" width : 90%; margin: auto" >
+      <a href="{{path('sportwear')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 150px" id="sportwear">Sportswear</button></a>
+      <a href="{{path('classic')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 150px" id="classic">Classic</button></a>
+      <a href="{{path('chic')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 150px" id="sportwear">Chic</button></a>
+      <a href="{{path('cocooning')}}"><button type="button" class="btn btn-secondary" style="margin-left: 75px;background-color:black ;width: 150px" id="classic">Cocooning</button></a>
+    </div>
 
-  <div style="height:2vh"></div>
+    <div style="height:2vh"></div>
 
-  <div style="margin:auto; width: 10.4% " >
+    <div style="margin:auto; width: 10.4% " >
 
-    {% for haut in hauts  %}
-      <img src="uploads/{{haut.photo}}"  style="height : 200px; width: 200px; border: 1px solid black" class="haut">
-    {% endfor %}
+      {% for haut in hauts  %}
+        <img src="http://akia.re/dressingBox/public/uploads/{{haut.photo}}"  style="height : 200px; width: 200px; border: 1px solid black" class="haut">
+      {% endfor %}
 
-    {% for  ba in bas %}
-    <img src="uploads/{{ba.photo}}" alt="" style="height :200px; width : 200px; border: 1px solid black" class="bas" > 
-    {% endfor %}
+      {% for  ba in bas %}
+      <img src="http://akia.re/dressingBox/public/uploads/{{ba.photo}}" alt="" style="height :200px; width : 200px; border: 1px solid black" class="bas" > 
+      {% endfor %}
 
 
-    {% for  chaussure in chaussures %}
-    <img src="uploads/{{chaussure.photo}}" alt="" style="height :200px; width : 200px; border: 1px solid black" class="chaussures" > 
-    {% endfor %}
-    
+      {% for  chaussure in chaussures %}
+      <img src="http://akia.re/dressingBox/public/uploads/{{chaussure.photo}}" alt="" style="height :200px; width : 200px; border: 1px solid black" class="chaussures" > 
+      {% endfor %}
+      
     <div style="height:2vh"></div>
 
     <div style="width: 10.4%">
@@ -57,5 +57,5 @@
 
 
   {% block javascripts %}
-  <script src="aleatoire.js"></script>  
+  <script src="http://akia.re/dressingBox/public/aleatoire.js"></script>  
   {% endblock %}
